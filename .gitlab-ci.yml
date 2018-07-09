@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+image: docker:latest
+
+deploy:
+  stage: deploy
+  variables:
+    - TAGS="jitesoft/ansible:latest jitesoft/ansible:2.5.5 ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
+  before_script:
+    - echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USER} --password-stdin
+    - echo ${CI_JOB_TOKEN} | docker login -u gitlab-ci-token --password-stdin registry.gitlab.com
+    - docker pull alpine:latest
+  script:
+    - BUILD=$(docker build -q --no-cache .)
+    - for tag in ${TAGS}; do docker tag ${BUILD} ${tag}; docker push ${tag}; done
