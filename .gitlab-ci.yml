@@ -5,6 +5,8 @@ image: docker:latest
 
 deploy:
   stage: deploy
+  services:
+    - docker:dind
   variables:
     TAGS: "jitesoft/ansible:latest jitesoft/ansible:2.5.5 ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}"
   before_script:
