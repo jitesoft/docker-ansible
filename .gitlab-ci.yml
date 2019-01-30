@@ -18,7 +18,7 @@ deploy:
     - echo ${CI_JOB_TOKEN} | docker login -u gitlab-ci-token --password-stdin registry.gitlab.com
     - docker pull alpine:latest
   script:
-    - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} -t jitesoft/ansible:latest --no-cache
+    - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} -t jitesoft/ansible:latest --no-cache .
     - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
     - docker push jitesoft/ansible:latest
 
