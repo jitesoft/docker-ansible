@@ -1,3 +1,6 @@
+import:
+  - https://gitlab.com/jitesoft/gitlab-ci-lib/raw/master/container_scan.yml
+
 stages:
   - deploy
 
@@ -16,3 +19,6 @@ deploy:
   script:
     - BUILD=$(docker build -q --no-cache .)
     - for tag in ${TAGS}; do docker tag ${BUILD} ${tag}; docker push ${tag}; done
+
+scan:
+  extends: .container_scanning
