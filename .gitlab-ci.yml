@@ -12,7 +12,7 @@ deploy:
   stage: deploy
   script:
     - VERSION=$(wget -qO- https://pypi.org/project/ansible/#files | grep -oP "(?<=ansible\-)(([0-9]{0,3}(\.?)){3})(?=\.tar\.gz)" | awk 'NR==1{print $1}')
-    - TAGLIST=$(helper "${CI_REGISTRY_IMAGE},jitesoft/ansible" "${VERSION},latest")
+    - TAGLIST=$(helper "${CI_REGISTRY_IMAGE},jitesoft/ansible" "${VERSION},latest,$(echo ${VERSION} | cut -d'.' -f1,2)")
     - docker buildx build --platform linux/arm64,linux/amd64 --push ${TAGLIST} --progress plain --build-arg VERSION=${VERSION} .
   tags: [ buildx, protected, jitesoft ]
 
