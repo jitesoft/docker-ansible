@@ -12,12 +12,14 @@ LABEL maintainer="Johannes Tegnér <johannes@jitesoft.com>" \
 ARG VERSION
 COPY ./entrypoint /usr/local/bin
 RUN apk add --no-cache --virtual .build-deps gcc libc-dev libffi-dev openssl-dev \
+  && chmod -R +x /usr/local/bin \
  && addgroup -g 721 ansible \
  && adduser -u 721 -G ansible -s /bin/ash -D ansible \
  && su - ansible -c "pip install ansible==${VERSION} --user" \
- && apk del .build-deps \
- && chmod +x /usr/local/bin/entrypoint
+ && apk del .build-deps
 USER ansible
 ENV PATH="/home/ansible/.local/bin:$PATH"
 ENTRYPOINT [ "entrypoint" ]
 CMD [ "ansible", "--version" ]
+
+
