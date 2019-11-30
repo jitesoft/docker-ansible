@@ -4,9 +4,9 @@ LABEL maintainer="Johannes Tegnér <johannes@jitesoft.com>" \
       maintainer.org="Jitesoft" \
       maintainer.org.uri="https://jitesoft.com" \
       com.jitesoft.project.repo.type="git" \
-      com.jitesoft.project.repo.uri="https://gitlab.com/jitesoft/dockerfiles/node-base" \
-      com.jitesoft.project.repo.issues="https://gitlab.com/jitesoft/dockerfiles/node-base/issues" \
-      com.jitesoft.project.registry.uri="registry.gitlab.com/jitesoft/dockerfiles/node-base" \
+      com.jitesoft.project.repo.uri="https://gitlab.com/jitesoft/dockerfiles/ansible" \
+      com.jitesoft.project.repo.issues="https://gitlab.com/jitesoft/dockerfiles/ansible/issues" \
+      com.jitesoft.project.registry.uri="registry.gitlab.com/jitesoft/dockerfiles/ansible" \
       com.jitesoft.app.ansible.version="${VERSION}"
 
 ARG VERSION
