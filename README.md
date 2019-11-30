@@ -19,7 +19,7 @@ Tags are based on ansible version, where latest is the latest version at build t
 
 ## Docker files
 
-Docker files can be found at  [GitLab](https://gitlab.com/jitesoft/dockerfiles/ansible) or [GitHub](https://github.com/jitesoft/docker-python)
+Docker files can be found at  [GitLab](https://gitlab.com/jitesoft/dockerfiles/ansible) or [GitHub](https://github.com/jitesoft/docker-ansible)
 
 ### Image labels
 
